@@ -9,7 +9,14 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
       - ruby/bundle-install
