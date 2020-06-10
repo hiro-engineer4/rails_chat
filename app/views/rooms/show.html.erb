@@ -1,7 +1,16 @@
-<h1>Chat room</h1>
-<div id='messages'>
-  <%= render @messages %>
+<h1>Chat room No.<%= @room.id %></h1>
+<div id="show_user" data-show_user="<%= current_user.id %>"></div>
+<div class="col-md-12">
+  <div class="chat_box">
+    <div id="messages", data-room_id="<%= @room.id %>"></div>
+    <%= render @messages %>
+  </div>
+  <center>
+    <div class="input">
+      <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+      <%= label_tag :content, ':送信' %>
+    </div>
+  </center>
 </div>
 
-<%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+

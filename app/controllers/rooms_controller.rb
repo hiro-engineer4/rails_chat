@@ -1,7 +1,17 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @rooms = Room.all.order(:id)
+  end
+
+  def new
+    Room.create!
+    redirect_to root_path
+  end
+
   def show
-    @messages = Message.all
+    @room = Room.find(params[:id])
+    @messages = @room.messages.order(:created_at)
   end
 end
