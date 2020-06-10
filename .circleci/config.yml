@@ -8,8 +8,9 @@ jobs:
       - image: circleci/ruby:2.6.5-stretch-node
         environment:
           RAILS_ENV: 'test'
-          PGHOST: 127.0.0.1
-          PGUSER: postgres
+          POSTGRES_DB: 'postgres'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'postgres'
     executor: ruby/default
 
     working_directory: ~/rails_chat
