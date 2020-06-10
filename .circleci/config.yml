@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
-        environment
+        environment:
           RAILS_ENV: 'test'
           POSTGRES_DB: 'postgres'
           POSTGRES_USER: 'postgres'
